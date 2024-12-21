@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import { HeroBlock } from "./blocks/HeroBlock";
+import { ImageCarousalBlock } from "./blocks/ImageCarousalBlock";
 
 export const Pages:CollectionConfig = {
     slug:'pages',
@@ -22,7 +22,7 @@ export const Pages:CollectionConfig = {
             name:'layouts',
             label:'Layouts',
             type:'blocks',
-            blocks:[HeroBlock]
+            blocks:[ImageCarousalBlock]
         }
 
     ]
