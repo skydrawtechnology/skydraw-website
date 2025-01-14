@@ -1,0 +1,38 @@
+.carousal-container {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+
+  .carousal-heading {
+    text-shadow: 4px 4px 10px RGBA(0, 0, 0, 0.50);
+    font-weight: 600;
+    font-size: 60px;
+  }
+
+  .carousal-description-wrapper {
+    color: white;
+    background-color: RGBA(0, 0, 0, 0.50);
+    font-size: 32px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .carousal-dots-container {
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .carousal-dot {
+      height: 10px;
+      width: 10px;
+      border: 2px solid RGBA(255, 255, 255, 0.5);
+      border-radius: 100px;
+
+      &.highlight {
+        background-color: white;
+      }
+    }
+  }
+}

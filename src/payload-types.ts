@@ -104,19 +104,48 @@ export interface Page {
   slug?: string | null;
   Title?: string | null;
   layouts?:
-    | {
-        images?:
-          | {
-              image?: (number | null) | Media;
-              heading?: string | null;
-              description?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'image-carousal';
-      }[]
+    | (
+        | {
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  heading?: string | null;
+                  description?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'image-carousal';
+          }
+        | {
+            introContent?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            introContent_html?: string | null;
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'intro';
+          }
+      )[]
     | null;
   updatedAt: string;
   createdAt: string;
@@ -234,6 +263,20 @@ export interface PagesSelect<T extends boolean = true> {
                     image?: T;
                     heading?: T;
                     description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        intro?:
+          | T
+          | {
+              introContent?: T;
+              introContent_html?: T;
+              images?:
+                | T
+                | {
+                    image?: T;
                     id?: T;
                   };
               id?: T;

@@ -1,17 +1,21 @@
+import { RenderBlocks } from "@/utils/RenderBlocks";
+import "./global.scss"
 import axios from "axios";
 
-async function getPagesData() {
-    const response = await axios.get('http://localhost:3000/api/pages-route');
+async function getPagesData(slug) {
+    const response = await axios.get(`http://localhost:3000/api/pages?where[slug][equals]=${slug}`);
     return response.data;
 }
 
 const Home = async () => {
-    const data = await getPagesData();
+    const tempSlug = '/'
+    const data = await getPagesData(tempSlug);
+
+    console.log(data.docs[0].layouts, 'data')
 
     return (
         <>
-            <h1>Hello Big Bird</h1>
-            <pre>{JSON.stringify(data, null, 4)}</pre>
+            <RenderBlocks layouts = {data.docs[0].layouts}/>
         </>
     );
 };
